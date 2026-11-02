@@ -14,19 +14,21 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
 
   return (
     <>
-      <header className="wrap top">
-        <a href={`/${lang}`} className="logo">
-          {site.shortName.toUpperCase()}
-          <span className="rdot" aria-hidden="true" />
-        </a>
-        <nav aria-label="Language" className="mono-label">
-          {locales.map((l) => (
-            <a key={l} href={`/${l}`} hrefLang={l} lang={l} aria-current={l === lang ? 'page' : undefined}>
-              {dictionaries[l].langShort}
-            </a>
-          ))}
-          <a className="gh" href={site.repo}>GitHub</a>
-        </nav>
+      <header className="topbar">
+        <div className="wrap top">
+          <a href={`/${lang}`} className="logo">
+            {site.shortName.toUpperCase()}
+            <span className="rdot" aria-hidden="true" />
+          </a>
+          <nav aria-label="Language" className="mono-label">
+            {locales.map((l) => (
+              <a key={l} href={`/${l}`} hrefLang={l} lang={l} aria-current={l === lang ? 'page' : undefined}>
+                {dictionaries[l].langShort}
+              </a>
+            ))}
+            <a className="gh" href={site.repo}>GitHub</a>
+          </nav>
+        </div>
       </header>
 
       <main>
