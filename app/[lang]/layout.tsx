@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Doto, Geist, Geist_Mono } from 'next/font/google'
 import { site } from '../../site.config'
 import { dictionaries, hasLocale, locales } from '../../i18n'
 import './globals.css'
+
+const dot = Doto({ subsets: ['latin'], weight: ['700', '900'], variable: '--font-dot' })
+const sans = Geist({ subsets: ['latin', 'cyrillic'], variable: '--font-sans' })
+const mono = Geist_Mono({ subsets: ['latin', 'cyrillic'], variable: '--font-mono' })
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }))
@@ -28,8 +33,13 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[la
   const { lang } = await params
   if (!hasLocale(lang)) notFound()
   return (
-    <html lang={lang}>
-      <body>{children}</body>
+    <html lang={lang} className={`${dot.variable} ${sans.variable} ${mono.variable}`}>
+      <body>
+        <noscript>
+          <style>{'.reveal .col,.reveal .notif,.reveal .cell{animation:none}'}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   )
 }

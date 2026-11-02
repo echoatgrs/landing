@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import type { Dictionary } from '../../i18n'
 
+// Stored in English so the sheet stays comparable across languages.
 const ROLE_VALUES = ['Agency', 'In-house marketing / SEO', 'Developer', 'Founder']
+const CMS = ['Payload', 'Strapi', 'Sanity', 'Contentful', 'WordPress (headless)']
 
 type State = 'idle' | 'sending' | 'done' | 'error'
 
@@ -11,13 +13,18 @@ export function WaitlistForm({
   source,
   lang,
   t,
-  compact = false,
+  onRed = false,
+  className = '',
+  style,
 }: {
   source: string
   lang: string
   t: Dictionary['form']
-  compact?: boolean
+  onRed?: boolean
+  className?: string
+  style?: React.CSSProperties
 }) {
+  const id = useId()
   const [state, setState] = useState<State>('idle')
   const [error, setError] = useState('')
 
@@ -43,31 +50,30 @@ export function WaitlistForm({
     }
   }
 
+  const cls = `form${onRed ? ' on-red' : ''} ${className}`
+
   if (state === 'done') {
     return (
-      <div className="form-done" role="status">
-        <strong>{t.doneTitle}</strong> {t.doneBody}
+      <div className={cls} style={style}>
+        <div className="form-done" role="status">
+          <strong>{t.doneTitle}</strong>
+          {t.doneBody}
+        </div>
       </div>
     )
   }
 
   return (
-    <form className={compact ? 'form form-compact' : 'form'} onSubmit={onSubmit} noValidate={false}>
+    <form className={cls} style={style} onSubmit={onSubmit}>
+      <label className="mono-label" htmlFor={`${id}-email`}>{t.emailLabel}</label>
       <div className="form-row">
-        <label className="sr-only" htmlFor={`email-${source}`}>{t.emailLabel}</label>
-        <input
-          id={`email-${source}`}
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          placeholder={t.emailPlaceholder}
-        />
-        <button type="submit" disabled={state === 'sending'}>
+        <input id={`${id}-email`} name="email" type="email" required autoComplete="email" placeholder={t.emailPlaceholder} />
+        <button type="submit" className="pill" disabled={state === 'sending'}>
           {state === 'sending' ? t.sending : t.submit}
         </button>
       </div>
-      {!compact && (
+      <details>
+        <summary>{t.more}</summary>
         <div className="form-extra">
           <label>
             <span>{t.siteLabel}</span>
@@ -77,11 +83,9 @@ export function WaitlistForm({
             <span>{t.cmsLabel}</span>
             <select name="cms" defaultValue="">
               <option value="">{t.choose}</option>
-              <option>Payload</option>
-              <option>Strapi</option>
-              <option>Sanity</option>
-              <option>Contentful</option>
-              <option>WordPress (headless)</option>
+              {CMS.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
               <option value="Other">{t.other}</option>
             </select>
           </label>
@@ -90,15 +94,14 @@ export function WaitlistForm({
             <select name="role" defaultValue="">
               <option value="">{t.choose}</option>
               {t.roles.map((r, i) => (
-                // Store the English value so the sheet stays comparable across languages.
                 <option key={r} value={ROLE_VALUES[i]}>{r}</option>
               ))}
               <option value="Other">{t.other}</option>
             </select>
           </label>
         </div>
-      )}
-      {/* Honeypot: real people never see or fill this. */}
+      </details>
+      {/* Honeypot: people never see or fill this. */}
       <input className="hp" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       {state === 'error' && <p className="form-error" role="alert">{error}</p>}
     </form>

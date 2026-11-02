@@ -3,6 +3,7 @@
 Waitlist landing page for the hosted GEO / AI search visibility product built on the
 open-source [Headless GEO plugin](https://github.com/echoatgrs/geo-plugin).
 Next.js 16, English / Russian / Chinese, sign-ups go to a Google Sheet.
+Dot-matrix look (Doto, Geist, Geist Mono via `next/font`), animations respect `prefers-reduced-motion`.
 
 ```sh
 npm install
@@ -12,6 +13,8 @@ npm run dev      # http://localhost:3000 -> redirects to /en, /ru or /zh
 | What | Where |
 | --- | --- |
 | Product name, domain, GitHub link (placeholders) | `site.config.ts` |
+| Layout, styles, motion | `app/[lang]/page.tsx`, `app/[lang]/globals.css`, `LiveConsole.tsx` (streaming log), `Reveal.tsx` (starts animations on scroll) |
+| Example data in the illustrations | `app/[lang]/demo.ts` (not real traffic) |
 | Page copy | `i18n/en.ts`, `i18n/ru.ts`, `i18n/zh.ts` (ru and zh are typed against en, so a missing string fails the build) |
 | Language redirect for `/` (Accept-Language, default English) | `proxy.ts` |
 | Sign-up endpoint | `app/api/waitlist/route.ts` |
