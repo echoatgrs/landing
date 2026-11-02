@@ -110,11 +110,21 @@ input::placeholder { color: #6a6a66; }
 .form input:focus-visible, .form select:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 .form .pill { height: 52px; padding: 0 26px; background: var(--ink); color: #f7f7f5; }
 .form details { font-size: 14px; }
-.form summary { cursor: pointer; color: var(--muted); padding: 4px 0; }
-.form-extra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
-.form-extra label { display: grid; gap: 4px; }
-.form-extra span { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-.form-extra input, .form-extra select { height: 40px; padding: 0 14px; font-size: 14px; border-color: var(--line-strong); }
+.form summary { cursor: pointer; color: var(--muted); padding: 4px 0; list-style: none; display: inline-flex; align-items: center; gap: 8px; }
+.form summary::-webkit-details-marker { display: none; }
+.form summary::before { content: '+'; font-family: var(--mono); width: 18px; height: 18px; border: 1px solid currentColor; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; line-height: 1; }
+.form details[open] summary::before { content: '–'; }
+.form-extra { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
+.form-extra fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.form-extra legend, .form-extra .lbl { display: block; padding: 0; margin-bottom: 6px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.form-extra input[type='text'] { width: 100%; height: 40px; padding: 0 16px; font-size: 14px; border-color: var(--line-strong); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips label { position: relative; cursor: pointer; }
+.chips input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chips span { display: inline-flex; align-items: center; min-height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-strong); background: #fff; font-size: 13px; color: var(--ink); transition: background .15s, border-color .15s, color .15s; }
+.chips label:hover span { border-color: var(--ink); }
+.chips input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; }
+.chips input:focus-visible + span { outline: 2px solid var(--red); outline-offset: 2px; }
 .form-error { color: var(--red); font-size: 14px; }
 .form-done { background: var(--ink); color: #f7f7f5; border-radius: 24px; padding: 18px 22px; font-size: 15px; line-height: 1.5; }
 .form-done strong { display: block; font-size: 17px; margin-bottom: 4px; }
@@ -294,7 +304,9 @@ input::placeholder { color: #6a6a66; }
 .cta .form .pill { background: var(--ink); color: #fff; }
 .cta .form-done { background: #fff; color: var(--ink); }
 .cta .form summary { color: #fff; }
-.cta .form-extra span { color: #fff; }
+.cta .form-extra legend, .cta .form-extra .lbl { color: #fff; }
+.cta .chips span { border-color: rgba(255,255,255,.6); }
+.cta .chips input:checked + span { background: #fff; color: var(--ink); border-color: #fff; }
 .cta .form-error { color: #fff; font-weight: 600; }
 
 .foot { padding-top: 24px; padding-bottom: 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: var(--muted); letter-spacing: 0.06em; }
@@ -310,7 +322,6 @@ input::placeholder { color: #6a6a66; }
   .log-row { padding-left: 24px; padding-right: 24px; }
   .idx-row { grid-template-columns: 96px minmax(0, 1fr) 48px; }
   .idx-seen { display: none; }
-  .form-extra { grid-template-columns: 1fr; }
   .section { padding-top: 80px; }
   .cta-in { padding: 40px 24px; }
   .marquee-track { font-size: 26px; }

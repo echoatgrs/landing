@@ -5,7 +5,7 @@ import type { Dictionary } from '../../i18n'
 
 // Stored in English so the sheet stays comparable across languages.
 const ROLE_VALUES = ['Agency', 'In-house marketing / SEO', 'Developer', 'Founder']
-const CMS = ['Payload', 'Strapi', 'Sanity', 'Contentful', 'WordPress (headless)']
+const CMS = ['Payload', 'Strapi', 'Sanity', 'Contentful', 'WordPress']
 
 type State = 'idle' | 'sending' | 'done' | 'error'
 
@@ -76,34 +76,32 @@ export function WaitlistForm({
         <summary>{t.more}</summary>
         <div className="form-extra">
           <label>
-            <span>{t.siteLabel}</span>
+            <span className="lbl">{t.siteLabel}</span>
             <input name="site" type="text" inputMode="url" placeholder="example.com" />
           </label>
-          <label>
-            <span>{t.cmsLabel}</span>
-            <select name="cms" defaultValue="">
-              <option value="">{t.choose}</option>
-              {CMS.map((c) => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-              <option value="Other">{t.other}</option>
-            </select>
-          </label>
-          <label>
-            <span>{t.roleLabel}</span>
-            <select name="role" defaultValue="">
-              <option value="">{t.choose}</option>
-              {t.roles.map((r, i) => (
-                <option key={r} value={ROLE_VALUES[i]}>{r}</option>
-              ))}
-              <option value="Other">{t.other}</option>
-            </select>
-          </label>
+          <Chips legend={t.cmsLabel} name="cms" options={[...CMS.map((c) => [c, c]), ['Other', t.other]]} />
+          <Chips legend={t.roleLabel} name="role" options={[...t.roles.map((r, i) => [ROLE_VALUES[i], r]), ['Other', t.other]]} />
         </div>
       </details>
       {/* Honeypot: people never see or fill this. */}
       <input className="hp" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       {state === 'error' && <p className="form-error" role="alert">{error}</p>}
     </form>
+  )
+}
+
+function Chips({ legend, name, options }: { legend: string; name: string; options: string[][] }) {
+  return (
+    <fieldset>
+      <legend>{legend}</legend>
+      <div className="chips">
+        {options.map(([value, label]) => (
+          <label key={value}>
+            <input type="radio" name={name} value={value} />
+            <span>{label}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
   )
 }
