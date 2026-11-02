@@ -1,0 +1,64 @@
+// Example data for the page's illustrations. Nothing here is real traffic.
+
+export type Kind = 'user' | 'search' | 'training' | 'spoofed'
+
+export const LOG_POOL: { agent: string; kind: Kind; path: string; fake?: boolean }[] = [
+  { agent: 'ChatGPT-User', kind: 'user', path: '/blog/headless-cms-pricing' },
+  { agent: 'PerplexityBot', kind: 'search', path: '/docs/getting-started' },
+  { agent: 'Claude-User', kind: 'user', path: '/blog/payload-vs-strapi' },
+  { agent: 'GPTBot', kind: 'training', path: '/pricing' },
+  { agent: 'OAI-SearchBot', kind: 'search', path: '/blog/llms-txt-explained' },
+  { agent: 'GPTBot', kind: 'spoofed', path: '/wp-login.php', fake: true },
+  { agent: 'ClaudeBot', kind: 'training', path: '/blog/payload-vs-strapi' },
+  { agent: 'Perplexity-User', kind: 'user', path: '/changelog' },
+  { agent: 'Claude-SearchBot', kind: 'search', path: '/docs/json-ld' },
+  { agent: 'CCBot', kind: 'training', path: '/about' },
+  { agent: 'ChatGPT-User', kind: 'user', path: '/blog/ai-crawler-logs' },
+]
+
+export const MARQUEE = [
+  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'Gemini',
+  'PerplexityBot', 'Perplexity-User', 'Doubao', 'Kimi', 'YandexGPT', 'GigaChat', 'Applebot', 'CCBot', 'Meta-ExternalAgent',
+]
+
+// [crawler owner, pages fetched out of 40]
+export const ENGINES: [string, number][] = [
+  ['OAI-SearchBot', 36],
+  ['Claude-SearchBot', 22],
+  ['Google', 38],
+  ['PerplexityBot', 31],
+  ['ByteDance', 27],
+  ['Moonshot AI', 12],
+  ['Yandex', 19],
+  ['Sber', 0],
+]
+export const ENGINE_PAGES = 40
+
+export const SITES: [string, string, string][] = [
+  ['acme.com', '38.2k', '6.1k'],
+  ['docs.acme.com', '21.7k', '4.4k'],
+  ['client-shop.de', '9.8k', '702'],
+  ['blog.client.io', '3.1k', '96'],
+]
+
+export const CHART = Array.from({ length: 30 }, (_, c) => {
+  const total = 3 + Math.round(5 + 4 * Math.sin(c / 3.2) + c / 6)
+  const user = Math.max(1, Math.round(total * (0.18 + 0.12 * Math.sin(c / 5 + 1))))
+  return { total, user }
+})
+
+export const REFERRALS: [string, number][] = [
+  ['ChatGPT', 62],
+  ['Perplexity', 21],
+  ['Claude', 9],
+  ['Gemini', 5],
+  ['Doubao', 3],
+]
+
+export const DIAGNOSTICS: [string, 'robots' | 'js' | 'never' | 'jsonld' | 'ok'][] = [
+  ['/pricing', 'robots'],
+  ['/compare', 'js'],
+  ['/blog/2024-roadmap', 'never'],
+  ['/docs/install', 'jsonld'],
+  ['/blog/payload-vs-strapi', 'ok'],
+]
