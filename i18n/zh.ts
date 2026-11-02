@@ -1,0 +1,95 @@
+import type { Dictionary } from './en'
+
+export const zh: Dictionary = {
+  langName: '中文',
+  langShort: '中',
+  meta: {
+    title: 'Headless 网站的 AI 搜索可见度',
+    description:
+      '为 headless 网站提供托管的 AI 搜索可见度追踪：哪些 AI 爬虫读了你的页面，真实用户何时通过 ChatGPT、Claude 和 Perplexity 调取你的页面，以及哪些 AI 回答给你带来了访问。基于开源的 Headless GEO 插件。',
+  },
+  nav: { openSourcePrefix: '开源于 ', github: 'GitHub' },
+  hero: {
+    eyebrow: '抢先体验 · AI 搜索可见度',
+    title: '看清 AI 搜索到底怎样使用你的内容。',
+    lede: '追踪哪些 AI 爬虫在读你的 headless 网站，真实用户什么时候把你的页面拉进 ChatGPT、Claude 和 Perplexity，以及哪些 AI 回答给你带来了访客。托管服务，支持多站点，基于一个今天就能用的开源插件。',
+    fine: '免费加入。开放体验时我们只发一封邮件通知你。',
+  },
+  form: {
+    emailLabel: '工作邮箱',
+    emailPlaceholder: 'you@company.com',
+    submit: '加入候补名单',
+    sending: '提交中…',
+    siteLabel: '你的网站（选填）',
+    cmsLabel: 'CMS',
+    roleLabel: '你的身份',
+    choose: '请选择…',
+    other: '其他',
+    roles: ['代理公司', '企业内部市场 / SEO', '开发者', '创始人'],
+    doneTitle: '你已加入候补名单。',
+    doneBody: '开放体验时我们会发邮件通知你。不会发垃圾邮件；你也可以直接回复那封邮件，告诉我们你最想追踪什么。',
+    genericError: '出了点问题，请重试。',
+  },
+  panel: {
+    label: '使用示例数据的仪表盘',
+    title: 'AI 访问 · 最近 24 小时',
+    sample: '示例数据',
+    crawler: '次爬虫抓取',
+    user: '次用户实时调取',
+    referral: '次引荐访问',
+    spoofed: '（伪造）',
+    kinds: { user: '用户实时', search: '搜索索引', training: '训练', unverified: '未验证' },
+    ago: (m: number) => `${m} 分钟前`,
+  },
+  problem: {
+    title: '大多数统计工具都看不到 headless 网站的 AI 流量',
+    lede: 'AI 爬虫不会运行你的统计脚本，而你的 CMS 也看不到前端收到的请求。所以对 AI 搜索最关键的那些问题，在你现有的工具里找不到答案。',
+    questions: [
+      'ChatGPT 真的在读我的新文章吗？',
+      '上周那次部署是不是把 ClaudeBot 拦掉了？',
+      '用户在 Perplexity 上问的是我哪些页面？',
+      '那个“GPTBot”是真的，还是冒名的爬虫？',
+    ],
+  },
+  cloud: {
+    title: '托管版会增加什么',
+    lede: '计划在抢先体验中提供。先做哪项，由候补名单上的反馈决定。',
+    features: [
+      { title: '所有站点集中查看', body: '接入你所有的站点或所有客户的站点，并排比较 AI 爬虫和用户实时调取的情况。' },
+      { title: '历史、趋势和周报', body: '按天汇总的数据保留数月，而不只是原始记录。每周一封邮件，可以直接转给客户或老板。' },
+      { title: 'AI 回答带来的引荐流量', body: '看到哪些访问来自 ChatGPT、Perplexity、Claude、Gemini 和 Copilot，以及它们落在哪些页面。' },
+      { title: '页面诊断', body: '找出没有任何 AI 抓取过的页面、被 robots.txt 拦掉的页面、只有执行 JavaScript 才能看到的内容，以及缺少结构化数据的页面。' },
+      { title: '告警', body: '部署把某个 AI 爬虫拦掉了，或者关键页面的用户实时调取下降了，都会第一时间通知你。' },
+      { title: '就在你的 CMS 里', body: '编辑在 Payload 或 Strapi 里编辑文章时，就能在旁边看到这篇文章的数据，不用另开工具。' },
+    ],
+  },
+  oss: {
+    title: '基于一个现在就能安装的插件',
+    lede: '开源的 Headless GEO 插件已经能在 Payload 和 Strapi 里运行。托管版用同一个插件上报数据，不需要传服务器日志，也不需要加追踪脚本。',
+    shipped: [
+      '带 IP 验证的 AI 爬虫日志，冒名的爬虫会被标出来',
+      '训练、搜索和用户实时三类访问分开统计',
+      '根据已发布内容生成 llms.txt 和 llms-full.txt',
+      '每个页面的 Markdown 版本（/post.md 或 Accept: text/markdown）',
+      '每个页面的 schema.org JSON-LD',
+      'Payload 和 Strapi 后台里的 AI 可见度仪表盘',
+    ],
+    codeHead: '现在就能用',
+    codeOr: '或',
+    docs: '在 GitHub 上查看文档 →',
+  },
+  faq: {
+    title: '常见问题',
+    items: [
+      { q: '插件免费吗？', a: '免费。插件采用 MIT 许可，可以单独使用，仪表盘就在你的 CMS 里。托管版在此基础上增加多站点视图、长期历史、报告、引荐流量和告警。' },
+      { q: '支持哪些技术栈？', a: '目前支持 Payload 3 和 Strapi 5，由 Next.js 前端上报爬虫访问。报名时告诉我们你用的 CMS，这会决定我们接下来支持什么。' },
+      { q: '用了它就能被 ChatGPT 引用吗？', a: '没有人能保证这一点，我们也不会这样承诺。我们做的是把能测量的东西测量出来（哪些 AI 抓取了你的页面、真实用户多频繁地触发这些抓取、哪些回答给你带来了访客），并指出妨碍 AI 读取你内容的技术问题。' },
+      { q: '会收集哪些数据？', a: '只记录已知 AI 代理的请求：User-Agent、IP 验证结果、路径和时间。不设置 Cookie，也不会给你的真人访客建立画像。' },
+      { q: '价格是多少？', a: '价格还没定。在任何人被收费之前，候补名单上的用户会先看到价格，我们也会请其中一些人一起来定。' },
+    ],
+  },
+  cta: {
+    title: '获取抢先体验资格',
+    lede: '我们会先邀请一小批用户，从 Payload 和 Strapi 网站开始。',
+  },
+}

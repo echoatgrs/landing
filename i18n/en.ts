@@ -1,0 +1,95 @@
+export const en = {
+  langName: 'English',
+  langShort: 'EN',
+  meta: {
+    title: 'AI search visibility for headless sites',
+    description:
+      'Hosted AI search visibility tracking for headless sites: which AI crawlers read your pages, when real users fetch them through ChatGPT, Claude and Perplexity, and which AI answers send you traffic. Built on the open-source Headless GEO plugin.',
+  },
+  nav: { openSourcePrefix: 'Open source on ', github: 'GitHub' },
+  hero: {
+    eyebrow: 'Early access · AI search visibility',
+    title: 'See how AI search actually uses your content.',
+    lede: 'Track which AI crawlers read your headless site, when real people pull your pages into ChatGPT, Claude and Perplexity, and which AI answers send you visitors. Hosted, multi-site, built on an open-source plugin you can run today.',
+    fine: 'Free to join. One email when early access opens.',
+  },
+  form: {
+    emailLabel: 'Work email',
+    emailPlaceholder: 'you@company.com',
+    submit: 'Join the waitlist',
+    sending: 'Joining…',
+    siteLabel: 'Your site (optional)',
+    cmsLabel: 'CMS',
+    roleLabel: 'You are',
+    choose: 'Choose…',
+    other: 'Other',
+    roles: ['Agency', 'In-house marketing / SEO', 'Developer', 'Founder'],
+    doneTitle: 'You’re on the list.',
+    doneBody: 'We’ll email you when early access opens. No spam, and you can reply to that email to tell us what you want tracked.',
+    genericError: 'Something went wrong. Please try again.',
+  },
+  panel: {
+    label: 'Example dashboard with sample data',
+    title: 'AI visits · last 24h',
+    sample: 'Sample data',
+    crawler: 'crawler fetches',
+    user: 'live user fetches',
+    referral: 'referral visits',
+    spoofed: '(spoofed)',
+    kinds: { user: 'Live user', search: 'Search index', training: 'Training', unverified: 'Unverified' },
+    ago: (m: number) => `${m} min ago`,
+  },
+  problem: {
+    title: 'Headless sites are invisible in most analytics',
+    lede: 'AI crawlers don’t run your analytics script, and your CMS never sees requests to your frontend. So the questions that matter for AI search have no answer in the tools you already have.',
+    questions: [
+      'Is ChatGPT actually reading my new articles?',
+      'Did last week’s deploy block ClaudeBot?',
+      'Which pages do people ask Perplexity about?',
+      'Is that “GPTBot” real, or a scraper using its name?',
+    ],
+  },
+  cloud: {
+    title: 'What the hosted version adds',
+    lede: 'Planned for early access. Waitlist answers decide the order.',
+    features: [
+      { title: 'Every site in one place', body: 'Connect all your sites, or all your clients’ sites, and compare AI crawler and user-fetch activity side by side.' },
+      { title: 'History, trends and weekly reports', body: 'Daily rollups kept for months, not just raw hits. A weekly email you can forward to a client or your boss.' },
+      { title: 'Referrals from AI answers', body: 'See which visits arrive from ChatGPT, Perplexity, Claude, Gemini and Copilot, and which pages they land on.' },
+      { title: 'Page diagnostics', body: 'Find pages no AI has fetched, pages blocked by robots.txt, content that only renders with JavaScript, and missing structured data.' },
+      { title: 'Alerts', body: 'Hear about it when a deploy blocks an AI crawler, or when live user fetches for your key pages drop.' },
+      { title: 'Inside your CMS', body: 'Editors see the numbers next to the article they are editing, in Payload or Strapi, without opening another tool.' },
+    ],
+  },
+  oss: {
+    title: 'Built on a plugin you can install now',
+    lede: 'The open-source Headless GEO plugin already runs inside Payload and Strapi. The hosted product uses the same plugin to send data, so there are no server logs to ship and no tracking script to add.',
+    shipped: [
+      'AI crawler logs with IP verification, so spoofed bots are flagged',
+      'Training, search and live user visits counted separately',
+      'llms.txt and llms-full.txt from your published content',
+      'Per-page Markdown (/post.md or Accept: text/markdown)',
+      'schema.org JSON-LD for each page',
+      'AI visibility dashboard in the Payload and Strapi admin',
+    ],
+    codeHead: 'Available today',
+    codeOr: 'or',
+    docs: 'Read the docs on GitHub →',
+  },
+  faq: {
+    title: 'Questions',
+    items: [
+      { q: 'Is the plugin free?', a: 'Yes. The plugin is MIT-licensed and keeps working on its own, with the dashboard inside your CMS. The hosted product adds multi-site views, long history, reports, referrals and alerts on top.' },
+      { q: 'Which stacks does it support?', a: 'Payload 3 and Strapi 5 today, with a Next.js frontend reporting crawler visits. Tell us your CMS when you sign up; it decides what we build next.' },
+      { q: 'Will this get me cited by ChatGPT?', a: 'Nobody can promise that, and we won’t. What we do is measure what can be measured (which AI agents fetch your pages, how often real users trigger those fetches, and which answers send you visitors) and point out technical problems that keep AI from reading your content.' },
+      { q: 'What data does it collect?', a: 'Requests from known AI agents: user agent, IP check result, path and time. It does not set cookies or build profiles of your human visitors.' },
+      { q: 'How much will it cost?', a: 'Pricing isn’t set yet. People on the waitlist will see it before anyone is charged, and we’ll ask some of you what it should be.' },
+    ],
+  },
+  cta: {
+    title: 'Get early access',
+    lede: 'We’re letting in a small group first, starting with Payload and Strapi sites.',
+  },
+}
+
+export type Dictionary = typeof en
