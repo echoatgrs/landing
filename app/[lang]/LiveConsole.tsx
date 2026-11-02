@@ -14,6 +14,17 @@ const clock = (ms: number) => {
 
 type Row = { i: number; at: number }
 
+// Precomputed as fixed strings so server and client render identical styles
+// (raw floats like 32.999999999999986 hydrate differently from "33px").
+const RING = Array.from({ length: 24 }, (_, k) => {
+  const a = (k / 24) * Math.PI * 2 - Math.PI / 2
+  return {
+    left: `${(62 + Math.cos(a) * 58).toFixed(2)}px`,
+    top: `${(62 + Math.sin(a) * 58).toFixed(2)}px`,
+    animationDelay: `${(k * 0.1).toFixed(1)}s`,
+  }
+})
+
 export function LiveConsole({ t }: { t: Dictionary['console'] }) {
   const [s, setS] = useState(() => ({
     tick: 0,
@@ -57,16 +68,9 @@ export function LiveConsole({ t }: { t: Dictionary['console'] }) {
           </div>
           <div className="ringbox">
             <div className="ring" aria-hidden="true">
-              {Array.from({ length: 24 }, (_, k) => {
-                const a = (k / 24) * Math.PI * 2 - Math.PI / 2
-                return (
-                  <span
-                    key={k}
-                    className={k % 6 === 0 ? 'ringdot hot' : 'ringdot'}
-                    style={{ left: 62 + Math.cos(a) * 58, top: 62 + Math.sin(a) * 58, animationDelay: `${k * 0.1}s` }}
-                  />
-                )
-              })}
+              {RING.map((d, k) => (
+                <span key={k} className={k % 6 === 0 ? 'ringdot hot' : 'ringdot'} style={d} />
+              ))}
               <div className="ring-num">{pad(s.perMin)}</div>
             </div>
             <div className="ring-label">
