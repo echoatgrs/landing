@@ -17,20 +17,18 @@ export const LOG_POOL: { agent: string; kind: Kind; path: string; fake?: boolean
 ]
 
 export const MARQUEE = [
-  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'Gemini',
-  'PerplexityBot', 'Perplexity-User', 'Doubao', 'Kimi', 'YandexGPT', 'GigaChat', 'Applebot', 'CCBot', 'Meta-ExternalAgent',
+  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'PerplexityBot',
+  'Perplexity-User', 'KimiBot', 'Kimi-SearchBot', 'Kimi-User', 'YandexAdditional', 'Google-Agent', 'Google-GeminiNotebook',
+  'Meta-ExternalAgent', 'Applebot', 'Bytespider', 'MistralAI-User', 'CCBot',
 ]
 
-// [crawler owner, pages fetched out of 40]
+// [crawler, pages fetched out of 40]. Only crawlers geo-core recognises.
 export const ENGINES: [string, number][] = [
   ['OAI-SearchBot', 36],
   ['Claude-SearchBot', 22],
-  ['Google', 38],
   ['PerplexityBot', 31],
-  ['ByteDance', 27],
-  ['Moonshot AI', 12],
-  ['Yandex', 19],
-  ['Sber', 0],
+  ['Kimi-SearchBot', 12],
+  ['YandexAdditional', 0],
 ]
 export const ENGINE_PAGES = 40
 
