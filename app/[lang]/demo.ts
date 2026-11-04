@@ -21,7 +21,7 @@ export const CITATIONS: number[] = [3, 0, 0, 1, 0, 2, 4]
 export const GAP: [string, number, number][] = [
   ['/pricing', 412, 0],
   ['/docs/install', 238, 0],
-  ['/blog/payload-vs-strapi', 190, 4],
+  ['/blog/crm-for-small-business', 190, 4],
   ['/compare', 96, 1],
 ]
 export const GAP_OF = 6
