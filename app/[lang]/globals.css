@@ -327,3 +327,4 @@ input::placeholder { color: #6a6a66; }
   .cta-in { padding: 40px 24px; }
   .marquee-track { font-size: 26px; }
 }
+.term.wide { flex: 2 1 640px; }

@@ -17,22 +17,22 @@ export const LOG_POOL: { agent: string; kind: Kind; path: string; fake?: boolean
 ]
 
 export const MARQUEE = [
-  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'Gemini',
-  'PerplexityBot', 'Perplexity-User', 'Doubao', 'Kimi', 'YandexGPT', 'GigaChat', 'Applebot', 'CCBot', 'Meta-ExternalAgent',
+  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'PerplexityBot',
+  'Perplexity-User', 'KimiBot', 'Kimi-SearchBot', 'Kimi-User', 'YandexAdditional', 'Google-Agent', 'Google-GeminiNotebook',
+  'Meta-ExternalAgent', 'Applebot', 'Bytespider', 'MistralAI-User', 'CCBot',
 ]
 
-// [crawler owner, pages fetched out of 40]
-export const ENGINES: [string, number][] = [
-  ['OAI-SearchBot', 36],
-  ['Claude-SearchBot', 22],
-  ['Google', 38],
-  ['PerplexityBot', 31],
-  ['ByteDance', 27],
-  ['Moonshot AI', 12],
-  ['Yandex', 19],
-  ['Sber', 0],
+// [crawler, pages fetched out of 40]. Only crawlers geo-core recognises.
+/** Per AI platform, last 30 days: [vendor, all crawler visits, live user fetches]. Mirrors the plugin's byPlatform stats. */
+export const ENGINES: [string, number, number][] = [
+  ['OpenAI', 4120, 1180],
+  ['Anthropic', 2260, 410],
+  ['Perplexity', 3050, 640],
+  ['Moonshot', 980, 75],
+  ['Yandex', 0, 0],
 ]
-export const ENGINE_PAGES = 40
+export const ENGINE_DOTS = 30
+export const ENGINES_TOTAL = ENGINES.reduce((n, e) => n + e[1], 0)
 
 export const SITES: [string, string, string][] = [
   ['acme.com', '38.2k', '6.1k'],
