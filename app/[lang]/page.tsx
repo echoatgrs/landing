@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { site } from '../../site.config'
 import { dictionaries, hasLocale, locales } from '../../i18n'
-import { CHART, DIAGNOSTICS, ENGINES, ENGINE_PAGES, MARQUEE, REFERRALS, SITES } from './demo'
+import { CHART, DIAGNOSTICS, ENGINES, ENGINE_DOTS, ENGINES_TOTAL, MARQUEE, REFERRALS, SITES } from './demo'
 import { LiveConsole } from './LiveConsole'
 import { Reveal } from './Reveal'
 import { WaitlistForm } from './WaitlistForm'
@@ -121,9 +121,47 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
                 </div>
               </div>
             </Reveal>
-            {/* 02 referrals */}
+            {/* 02 which AI reads you */}
+            <Reveal className="card wide">
+              <CardHead n="02" title={f.indexed.title} body={f.indexed.body} />
+              <div className="idx" role="table" aria-label={f.indexed.title}>
+                <div className="idx-row head" role="row">
+                  <span role="columnheader">{f.indexed.cols.engine}</span>
+                  <span role="columnheader">{f.indexed.cols.pages}</span>
+                  <span role="columnheader" style={{ textAlign: 'right' }}>{f.indexed.cols.cover}</span>
+                  <span role="columnheader" className="idx-seen">{f.indexed.cols.seen}</span>
+                </div>
+                {ENGINES.map(([vendor, visits, user], ei) => {
+                  const max = Math.max(...ENGINES.map((e) => e[1]))
+                  const on = visits ? Math.max(1, Math.round((visits / max) * ENGINE_DOTS)) : 0
+                  const pct = Math.round((visits / ENGINES_TOTAL) * 100)
+                  return (
+                    <div key={vendor} className="idx-row" role="row">
+                      <span role="cell">
+                        {f.indexed.names[ei]}
+                        <small>{vendor}</small>
+                      </span>
+                      <span className="idx-dots" role="cell" aria-label={visits.toLocaleString('en-US')}>
+                        {Array.from({ length: ENGINE_DOTS }, (_, q) => (
+                          <i
+                            key={q}
+                            className={q < on ? 'on cell' : undefined}
+                            style={q < on ? { animationDelay: `${(0.2 + ei * 0.12 + q * 0.018).toFixed(2)}s` } : undefined}
+                          />
+                        ))}
+                      </span>
+                      <span role="cell" className={pct < 10 ? 'idx-pct low' : 'idx-pct'}>{pct}%</span>
+                      <span role="cell" className="idx-seen">{user.toLocaleString('en-US')}</span>
+                    </div>
+                  )
+                })}
+              </div>
+              <p className="fine">{f.indexed.note}</p>
+            </Reveal>
+
+            {/* 03 referrals */}
             <Reveal className="card">
-              <CardHead n="02" title={f.referrals.title} body={f.referrals.body} />
+              <CardHead n="03" title={f.referrals.title} body={f.referrals.body} />
               <div className="refs bottom">
                 {REFERRALS.map(([name, pct], ri) => {
                   const on = Math.max(1, Math.round(pct / 5))
@@ -177,42 +215,6 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
           </div>
 
           <div className="cards">
-            {/* 03 which AI has indexed you */}
-            <Reveal className="card wide">
-              <CardHead n="03" title={h.indexed.title} body={h.indexed.body} preview={h.tag} />
-              <div className="idx" role="table" aria-label={h.indexed.title}>
-                <div className="idx-row head" role="row">
-                  <span role="columnheader">{h.indexed.cols.engine}</span>
-                  <span role="columnheader">{h.indexed.cols.pages}</span>
-                  <span role="columnheader" style={{ textAlign: 'right' }}>{h.indexed.cols.cover}</span>
-                  <span role="columnheader" className="idx-seen">{h.indexed.cols.seen}</span>
-                </div>
-                {ENGINES.map(([owner, fetched], ei) => {
-                  const pct = Math.round((fetched / ENGINE_PAGES) * 100)
-                  return (
-                    <div key={owner} className="idx-row" role="row">
-                      <span role="cell">
-                        {h.indexed.names[ei]}
-                        <small>{owner}</small>
-                      </span>
-                      <span className="idx-dots" role="cell" aria-label={`${fetched} / ${ENGINE_PAGES}`}>
-                        {Array.from({ length: ENGINE_PAGES }, (_, q) => (
-                          <i
-                            key={q}
-                            className={q < fetched ? 'on cell' : undefined}
-                            style={q < fetched ? { animationDelay: `${(0.2 + ei * 0.12 + q * 0.018).toFixed(2)}s` } : undefined}
-                          />
-                        ))}
-                      </span>
-                      <span role="cell" className={pct < 30 ? 'idx-pct low' : 'idx-pct'}>{pct}%</span>
-                      <span role="cell" className="idx-seen">{h.indexed.seen[ei]}</span>
-                    </div>
-                  )
-                })}
-              </div>
-              <p className="fine">{h.indexed.note}</p>
-            </Reveal>
-
             {/* 04 all sites */}
             <Reveal className="card wide dark">
               <div className="layer dots-dark" />

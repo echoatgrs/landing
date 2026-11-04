@@ -62,6 +62,13 @@ export const en = {
       unit: 'user fetches · 7d',
       lines: ['ChatGPT-User · 2h ago', 'Kimi-User · 5h ago', 'JSON-LD · checks pass ✓'],
     },
+    indexed: {
+      title: 'Which AI reads you',
+      body: 'The dashboard in your CMS counts crawler visits per AI platform, from ChatGPT and Claude to Kimi and YandexGPT, and how many were live fetches for a real user. It also lists the pages no AI has crawled yet.',
+      cols: { engine: 'AI platform', pages: 'crawler visits · 30 days', cover: 'share', seen: 'user fetches' },
+      names: ['ChatGPT', 'Claude', 'Perplexity', 'Kimi', 'YandexGPT'],
+      note: 'A crawler fetching a page means it can be in that AI’s index. It doesn’t guarantee the page shows up in answers.',
+    },
     referrals: {
       title: 'Visitors from AI answers',
       body: 'Which AI sent the visitor, and which page they landed on. Off by default; turn it on in the plugin config.',
@@ -71,14 +78,6 @@ export const en = {
     titleLines: ['Coming', 'next'],
     lede: 'Not built yet. Join the waitlist and tell us which one you want first.',
     tag: 'waitlist',
-    indexed: {
-      title: 'Which AI has indexed you',
-      body: 'For each AI search engine, from ChatGPT and Claude to Kimi and YandexGPT: how many of your pages its crawler has fetched, and when it last came by. One dot per page.',
-      cols: { engine: 'AI · crawler', pages: 'pages fetched', cover: 'cover', seen: 'last seen' },
-      names: ['ChatGPT', 'Claude', 'Perplexity', 'Kimi', 'YandexGPT'],
-      seen: ['2h ago', '1d ago', '40m ago', '3d ago', 'never'],
-      note: 'A crawler fetching a page means it can be in that AI’s index. It doesn’t guarantee the page shows up in answers.',
-    },
     sites: {
       title: 'All your sites, one view',
       body: 'Compare crawler and user-fetch activity across every site you run, or every client.',

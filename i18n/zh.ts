@@ -64,6 +64,13 @@ export const zh: Dictionary = {
       unit: '用户调取 · 7 天',
       lines: ['ChatGPT-User · 2 小时前', 'Kimi-User · 5 小时前', 'JSON-LD · 检查通过 ✓'],
     },
+    indexed: {
+      title: '哪些 AI 在读你',
+      body: 'CMS 后台的仪表盘按 AI 平台统计爬虫访问，从 ChatGPT、Claude 到 Kimi、YandexGPT，并区分其中有多少是真人提问触发的实时调取。还会列出还没有任何 AI 抓取过的页面。',
+      cols: { engine: 'AI 平台', pages: '爬虫访问 · 30 天', cover: '占比', seen: '用户调取' },
+      names: ['ChatGPT', 'Claude', 'Perplexity', 'Kimi', 'YandexGPT'],
+      note: '爬虫抓取了页面，说明它可能进入了该 AI 的索引，但不保证会出现在回答里。',
+    },
     referrals: {
       title: 'AI 回答带来的访客',
       body: '访客是哪个 AI 送来的，落在了哪个页面。默认关闭，在插件配置里打开。',
@@ -73,14 +80,6 @@ export const zh: Dictionary = {
     titleLines: ['接下来', '要做的'],
     lede: '下面这些还没开发。加入候补，告诉我们你最想先用哪一个。',
     tag: '候补中',
-    indexed: {
-      title: '哪些 AI 收录了你',
-      body: '从 ChatGPT、Claude 到 Kimi、YandexGPT，每个 AI 搜索的爬虫抓取了你多少页面、最近一次什么时候来过。一个点代表一个页面。',
-      cols: { engine: 'AI · 爬虫', pages: '已抓取页面', cover: '覆盖', seen: '最近来访' },
-      names: ['ChatGPT', 'Claude', 'Perplexity', 'Kimi', 'YandexGPT'],
-      seen: ['2 小时前', '1 天前', '40 分钟前', '3 天前', '从未'],
-      note: '爬虫抓取了页面，说明它可能进入了该 AI 的索引，但不保证会出现在回答里。',
-    },
     sites: {
       title: '所有站点，一个视图',
       body: '在一个地方比较你所有站点（或所有客户站点）的爬虫抓取和用户实时调取。',

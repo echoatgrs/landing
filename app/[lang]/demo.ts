@@ -23,14 +23,16 @@ export const MARQUEE = [
 ]
 
 // [crawler, pages fetched out of 40]. Only crawlers geo-core recognises.
-export const ENGINES: [string, number][] = [
-  ['OAI-SearchBot', 36],
-  ['Claude-SearchBot', 22],
-  ['PerplexityBot', 31],
-  ['Kimi-SearchBot', 12],
-  ['YandexAdditional', 0],
+/** Per AI platform, last 30 days: [vendor, all crawler visits, live user fetches]. Mirrors the plugin's byPlatform stats. */
+export const ENGINES: [string, number, number][] = [
+  ['OpenAI', 4120, 1180],
+  ['Anthropic', 2260, 410],
+  ['Perplexity', 3050, 640],
+  ['Moonshot', 980, 75],
+  ['Yandex', 0, 0],
 ]
-export const ENGINE_PAGES = 40
+export const ENGINE_DOTS = 30
+export const ENGINES_TOTAL = ENGINES.reduce((n, e) => n + e[1], 0)
 
 export const SITES: [string, string, string][] = [
   ['acme.com', '38.2k', '6.1k'],
