@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { site } from '../../site.config'
 import { dictionaries, hasLocale, locales } from '../../i18n'
 import { CHART, CITATIONS, GAP, GAP_OF, SITES } from './demo'
+import { LogoMark } from './Logo'
 import { Reveal } from './Reveal'
 import { WaitlistForm } from './WaitlistForm'
 
@@ -16,8 +17,8 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
       <header className="topbar">
         <div className="wrap top">
           <a href={`/${lang}`} className="logo">
+            <LogoMark size={26} />
             {site.shortName.toUpperCase()}
-            <span className="rdot" aria-hidden="true" />
           </a>
           <nav aria-label="Language" className="mono-label">
             {locales.map((l) => (

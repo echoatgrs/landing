@@ -1,6 +1,6 @@
-# GEO waitlist
+# Askbeam waitlist
 
-Waitlist landing page for the hosted GEO / AI search visibility product built on the
+Waitlist landing page for Askbeam (AI indexing and exposure tracking), built alongside the
 open-source [Headless GEO plugin](https://github.com/echoatgrs/geo-plugin).
 Next.js 16, English / Russian / Chinese, sign-ups go to a Google Sheet.
 Dot-matrix look (Doto, Geist, Geist Mono via `next/font`), animations respect `prefers-reduced-motion`.
