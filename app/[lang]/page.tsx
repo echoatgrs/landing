@@ -1,8 +1,7 @@
 import { notFound } from 'next/navigation'
 import { site } from '../../site.config'
 import { dictionaries, hasLocale, locales } from '../../i18n'
-import { CHART, CITATIONS, DIAGNOSTICS, ENGINES, ENGINE_DOTS, ENGINES_TOTAL, MARQUEE, REFERRALS, SITES } from './demo'
-import { LiveConsole } from './LiveConsole'
+import { CHART, CITATIONS, GAP, GAP_OF, SITES } from './demo'
 import { Reveal } from './Reveal'
 import { WaitlistForm } from './WaitlistForm'
 
@@ -11,7 +10,6 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
   if (!hasLocale(lang)) notFound()
   const t = dictionaries[lang]
   const h = t.soon
-  const f = t.free
 
   return (
     <>
@@ -53,154 +51,14 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
           </div>
         </section>
 
-        <div className="wrap">
-          <LiveConsole t={t.console} />
-        </div>
-
         <section className="marquee" aria-label={t.marqueeLabel}>
           <div className="marq marquee-track">
-            {[...MARQUEE, ...MARQUEE].map((b, i) => (
-              <span key={i} aria-hidden={i >= MARQUEE.length ? true : undefined}>
+            {[...t.marquee, ...t.marquee].map((b, i) => (
+              <span key={i} aria-hidden={i >= t.marquee.length ? true : undefined}>
                 {b}
                 <i className="rdot" />
               </span>
             ))}
-          </div>
-        </section>
-
-        <section className="wrap section">
-          <p className="mono-label kicker">[ {t.purposes.label} ]</p>
-          <div className="purposes">
-            {t.purposes.items.map((p, i) => (
-              <div key={p.word} className={i === 2 ? 'pcard dark' : 'pcard'}>
-                <div className="word dotfont">{p.word}</div>
-                <p>{p.body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="wrap section">
-          <div className="sec-head">
-            <h2 className="dotfont">
-              {f.titleLines[0]}
-              <br />
-              {f.titleLines[1]}
-            </h2>
-            <p>{f.lede}</p>
-          </div>
-
-          <div className="cards">
-            {/* 01 in the CMS */}
-            <Reveal className="card wide soft cms">
-              <div className="cms-copy">
-                <p className="card-num">01</p>
-                <h3>{f.cms.title}</h3>
-                <p className="card-body">{f.cms.body}</p>
-              </div>
-              <div className="cms-mock">
-                <div className="cms-editor">
-                  <div className="mono-label" style={{ fontSize: 11, color: 'var(--muted)' }}>{f.cms.crumb}</div>
-                  <div className="t">{f.cms.post}</div>
-                  <div className="cms-lines" aria-hidden="true">
-                    <i style={{ width: '100%' }} />
-                    <i style={{ width: '92%' }} />
-                    <i style={{ width: '97%' }} />
-                    <i style={{ width: '64%' }} />
-                  </div>
-                </div>
-                <div className="cms-panel">
-                  <div className="mono-label" style={{ fontSize: 11, color: 'var(--dark-muted)' }}>{f.cms.panel}</div>
-                  <div className="big">1,180</div>
-                  <div className="u">{f.cms.unit}</div>
-                  <ul>
-                    {f.cms.lines.map((l) => (
-                      <li key={l}>{l}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </Reveal>
-            {/* 02 which AI reads you */}
-            <Reveal className="card wide">
-              <CardHead n="02" title={f.indexed.title} body={f.indexed.body} />
-              <div className="idx" role="table" aria-label={f.indexed.title}>
-                <div className="idx-row head" role="row">
-                  <span role="columnheader">{f.indexed.cols.engine}</span>
-                  <span role="columnheader">{f.indexed.cols.pages}</span>
-                  <span role="columnheader" style={{ textAlign: 'right' }}>{f.indexed.cols.cover}</span>
-                  <span role="columnheader" className="idx-seen">{f.indexed.cols.seen}</span>
-                </div>
-                {ENGINES.map(([vendor, visits, user], ei) => {
-                  const max = Math.max(...ENGINES.map((e) => e[1]))
-                  const on = visits ? Math.max(1, Math.round((visits / max) * ENGINE_DOTS)) : 0
-                  const pct = Math.round((visits / ENGINES_TOTAL) * 100)
-                  return (
-                    <div key={vendor} className="idx-row" role="row">
-                      <span role="cell">
-                        {f.indexed.names[ei]}
-                        <small>{vendor}</small>
-                      </span>
-                      <span className="idx-dots" role="cell" aria-label={visits.toLocaleString('en-US')}>
-                        {Array.from({ length: ENGINE_DOTS }, (_, q) => (
-                          <i
-                            key={q}
-                            className={q < on ? 'on cell' : undefined}
-                            style={q < on ? { animationDelay: `${(0.2 + ei * 0.12 + q * 0.018).toFixed(2)}s` } : undefined}
-                          />
-                        ))}
-                      </span>
-                      <span role="cell" className={pct < 10 ? 'idx-pct low' : 'idx-pct'}>{pct}%</span>
-                      <span role="cell" className="idx-seen">{user.toLocaleString('en-US')}</span>
-                    </div>
-                  )
-                })}
-              </div>
-              <p className="fine">{f.indexed.note}</p>
-            </Reveal>
-
-            {/* 03 referrals */}
-            <Reveal className="card">
-              <CardHead n="03" title={f.referrals.title} body={f.referrals.body} />
-              <div className="refs bottom">
-                {REFERRALS.map(([name, pct], ri) => {
-                  const on = Math.max(1, Math.round(pct / 5))
-                  return (
-                    <div key={name}>
-                      <div className="ref-top"><span>{name}</span><span>{pct}%</span></div>
-                      <div className="cells" aria-hidden="true">
-                        {Array.from({ length: 20 }, (_, q) => (
-                          <i
-                            key={q}
-                            className={q < on ? `on cell${ri === 0 ? ' first' : ''}` : undefined}
-                            style={q < on ? { animationDelay: `${(0.4 + ri * 0.15 + q * 0.04).toFixed(2)}s` } : undefined}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </Reveal>
-
-            <div className="oss-card">
-              <p className="mono-label kicker">[ {t.oss.label} ]</p>
-              <h2>{t.oss.title}</h2>
-              <ul>
-                {t.oss.items.map((i) => (
-                  <li key={i}>{i}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="term wide">
-              <div className="mono-label">{t.oss.install}</div>
-              <pre>
-                <b>$</b> npm i payload-plugin-geo @garus-ltd/geo-next{'\n'}
-                <span># {t.oss.or}</span>{'\n'}
-                <b>$</b> npm i strapi-plugin-geo @garus-ltd/geo-next<span className="blink">▌</span>
-              </pre>
-              <a className="pill" href={site.repo}>{t.oss.docs}</a>
-            </div>
           </div>
         </section>
 
@@ -215,6 +73,73 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
           </div>
 
           <div className="cards">
+            {/* 01 citation monitoring */}
+            <Reveal className="card wide soft">
+              <CardHead n="01" title={h.citations.title} body={h.citations.body} preview={h.tag} />
+              <div className="cite-wrap">
+                <div className="note dark cite-q">
+                  <div className="note-head mono-label">
+                    <span>{h.citations.qLabel}</span>
+                    <span>{h.citations.qTime}</span>
+                  </div>
+                  <p><strong>{h.citations.q}</strong></p>
+                </div>
+                <div className="diag cite-list">
+                  {h.citations.names.map((name, ci) => {
+                    const rank = CITATIONS[ci]
+                    return (
+                      <div key={name}>
+                        <span className="p">{name}</span>
+                        <span className={`chip ${rank ? (rank === 1 ? 'red' : 'ink') : 'ok'}`}>
+                          {rank ? `${h.citations.cited} #${rank}` : h.citations.notCited}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </Reveal>
+
+            {/* 02 read but never cited */}
+            <Reveal className="card">
+              <CardHead n="02" title={h.gap.title} body={h.gap.body} preview={h.tag} />
+              <div className="diag gap-list bottom">
+                <div className="head mono-label">
+                  <span>{h.gap.cols[0]}</span>
+                  <span>{h.gap.cols[1]}</span>
+                  <span>{h.gap.cols[2]}</span>
+                </div>
+                {GAP.map(([path, reads, cited]) => (
+                  <div key={path}>
+                    <span className="p">{path}</span>
+                    <span className="n">{reads}</span>
+                    <span className={`chip ${cited ? 'ink' : 'red'}`}>{cited ? `${cited}/${GAP_OF}` : h.gap.notCited}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            {/* 03 weekly brief and alerts */}
+            <Reveal className="card">
+              <CardHead n="03" title={h.alerts.title} body={h.alerts.body} preview={h.tag} />
+              <div className="notes bottom">
+                <div className="note dark notif" style={{ animationDelay: '.2s' }}>
+                  <div className="note-head mono-label">
+                    <span><span className="blink" style={{ color: 'var(--red-on-dark)' }}>●</span> {site.shortName}</span>
+                    <span>{h.alerts.n1Time}</span>
+                  </div>
+                  <p><strong>{h.alerts.n1Title}</strong><span>{h.alerts.n1Body}</span></p>
+                </div>
+                <div className="note notif" style={{ animationDelay: '.6s' }}>
+                  <div className="note-head mono-label">
+                    <span>{site.shortName}</span>
+                    <span>{h.alerts.n2Time}</span>
+                  </div>
+                  <p><strong>{h.alerts.n2Title}</strong><span>{h.alerts.n2Body}</span></p>
+                </div>
+              </div>
+            </Reveal>
+
             {/* 04 all sites */}
             <Reveal className="card wide dark">
               <div className="layer dots-dark" />
@@ -253,70 +178,30 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
                 </div>
               </div>
             </Reveal>
+          </div>
+        </section>
 
-            {/* 05 alerts */}
-            <Reveal className="card">
-              <CardHead n="05" title={h.alerts.title} body={h.alerts.body} preview={h.tag} />
-              <div className="notes bottom">
-                <div className="note dark notif" style={{ animationDelay: '.2s' }}>
-                  <div className="note-head mono-label">
-                    <span><span className="blink" style={{ color: 'var(--red-on-dark)' }}>●</span> {site.shortName}</span>
-                    <span>{h.alerts.n1Time}</span>
-                  </div>
-                  <p><strong>{h.alerts.n1Title}</strong><span>{h.alerts.n1Body}</span></p>
-                </div>
-                <div className="note notif" style={{ animationDelay: '.6s' }}>
-                  <div className="note-head mono-label">
-                    <span>{site.shortName}</span>
-                    <span>{h.alerts.n2Time}</span>
-                  </div>
-                  <p><strong>{h.alerts.n2Title}</strong><span>{h.alerts.n2Body}</span></p>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* 06 scheduled checks */}
-            <Reveal className="card">
-              <CardHead n="06" title={h.diagnostics.title} body={h.diagnostics.body} preview={h.tag} />
-              <div className="diag bottom">
-                {DIAGNOSTICS.map(([path, tag]) => (
-                  <div key={path}>
-                    <span className="p">{path}</span>
-                    <span className={`chip ${tag === 'robots' ? 'red' : tag === 'js' ? 'ink' : tag === 'ok' ? 'ok' : ''}`}>
-                      {h.diagnostics.tags[tag]}
-                    </span>
-                  </div>
+        <section className="wrap section">
+          <div className="oss">
+            <div className="oss-card">
+              <p className="mono-label kicker">[ {t.oss.label} ]</p>
+              <h2>{t.oss.title}</h2>
+              <p className="oss-lede">{t.oss.lede}</p>
+              <ul>
+                {t.oss.items.map((i) => (
+                  <li key={i}>{i}</li>
                 ))}
-              </div>
-            </Reveal>
-
-            {/* 07 citation monitoring */}
-            <Reveal className="card wide soft">
-              <CardHead n="07" title={h.citations.title} body={h.citations.body} preview={h.tag} />
-              <div className="cite-wrap">
-                <div className="note dark cite-q">
-                  <div className="note-head mono-label">
-                    <span>{h.citations.qLabel}</span>
-                    <span>{h.citations.qTime}</span>
-                  </div>
-                  <p><strong>{h.citations.q}</strong></p>
-                </div>
-                <div className="diag cite-list">
-                  {h.citations.names.map((name, ci) => {
-                    const rank = CITATIONS[ci]
-                    return (
-                      <div key={name}>
-                        <span className="p">{name}</span>
-                        <span className={`chip ${rank ? (rank === 1 ? 'red' : 'ink') : 'ok'}`}>
-                          {rank ? `${h.citations.cited} #${rank}` : h.citations.notCited}
-                        </span>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            </Reveal>
-
+              </ul>
+            </div>
+            <div className="term">
+              <div className="mono-label">{t.oss.install}</div>
+              <pre>
+                <b>$</b> npm i payload-plugin-geo @garus-ltd/geo-next{'\n'}
+                <span># {t.oss.or}</span>{'\n'}
+                <b>$</b> npm i strapi-plugin-geo @garus-ltd/geo-next<span className="blink">▌</span>
+              </pre>
+              <a className="pill" href={site.repo}>{t.oss.docs}</a>
+            </div>
           </div>
         </section>
 

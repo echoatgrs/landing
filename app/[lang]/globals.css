@@ -266,6 +266,10 @@ input::placeholder { color: #6a6a66; }
 .cite-wrap { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
 .cite-q { flex: 1 1 260px; min-width: 0; }
 .cite-list { flex: 1.4 1 300px; min-width: 0; }
+.gap-list div { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; }
+.gap-list .head { font-size: 11px; color: var(--muted); }
+.gap-list .n { text-align: right; color: var(--ink-3); min-width: 4ch; }
+.oss-lede { margin-top: 16px; font-size: 16px; line-height: 1.55; color: var(--ink-2); max-width: 36em; }
 .chip.ok { border-color: transparent; color: var(--ink-3); padding-left: 0; padding-right: 0; }
 
 /* cms mock */
