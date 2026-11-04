@@ -21,7 +21,7 @@ npm run dev      # http://localhost:3000 -> redirects to /en, /ru or /zh
 | Google Sheets receiver | `google-sheets/Code.gs` |
 
 The form posts to `/api/waitlist`, which validates the email, drops honeypot submissions and forwards
-`{ email, site, cms, role, lang, source, createdAt }` as JSON to `WAITLIST_WEBHOOK_URL`.
+`{ email, site, industry, role, lang, source, createdAt }` as JSON to `WAITLIST_WEBHOOK_URL`.
 Without that variable, `next dev` appends to `.data/waitlist.jsonl` and production answers 503.
 
 ## Google Sheets
