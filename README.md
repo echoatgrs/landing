@@ -1,6 +1,6 @@
-# GEO waitlist
+# Askbeam waitlist
 
-Waitlist landing page for the hosted GEO / AI search visibility product built on the
+Waitlist landing page for Askbeam (AI indexing and exposure tracking), built alongside the
 open-source [Headless GEO plugin](https://github.com/echoatgrs/geo-plugin).
 Next.js 16, English / Russian / Chinese, sign-ups go to a Google Sheet.
 Dot-matrix look (Doto, Geist, Geist Mono via `next/font`), animations respect `prefers-reduced-motion`.
@@ -21,7 +21,7 @@ npm run dev      # http://localhost:3000 -> redirects to /en, /ru or /zh
 | Google Sheets receiver | `google-sheets/Code.gs` |
 
 The form posts to `/api/waitlist`, which validates the email, drops honeypot submissions and forwards
-`{ email, site, cms, role, lang, source, createdAt }` as JSON to `WAITLIST_WEBHOOK_URL`.
+`{ email, site, industry, role, lang, source, createdAt }` as JSON to `WAITLIST_WEBHOOK_URL`.
 Without that variable, `next dev` appends to `.data/waitlist.jsonl` and production answers 503.
 
 ## Google Sheets

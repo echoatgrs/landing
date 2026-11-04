@@ -6,7 +6,7 @@
  *   SECRET  a random string; the webhook URL must end with ?key=<SECRET>
  */
 const SHEET_NAME = 'Waitlist'
-const COLUMNS = ['createdAt', 'email', 'site', 'cms', 'role', 'lang', 'source']
+const COLUMNS = ['createdAt', 'email', 'site', 'industry', 'role', 'lang', 'source']
 
 function doPost(e) {
   const secret = PropertiesService.getScriptProperties().getProperty('SECRET')

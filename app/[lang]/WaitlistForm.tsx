@@ -5,7 +5,8 @@ import type { Dictionary } from '../../i18n'
 
 // Stored in English so the sheet stays comparable across languages.
 const ROLE_VALUES = ['Agency', 'In-house marketing / SEO', 'Developer', 'Founder']
-const CMS = ['Payload', 'Strapi', 'Sanity', 'Contentful', 'WordPress']
+// Stable values stored in the sheet; labels come from the dictionary in the same order.
+const INDUSTRY_VALUES = ['E-commerce', 'SaaS', 'B2B / manufacturing', 'Local services', 'Education', 'Healthcare', 'Finance', 'Media']
 
 type State = 'idle' | 'sending' | 'done' | 'error'
 
@@ -79,7 +80,7 @@ export function WaitlistForm({
             <span className="lbl">{t.siteLabel}</span>
             <input name="site" type="text" inputMode="url" placeholder="example.com" />
           </label>
-          <Chips legend={t.cmsLabel} name="cms" options={[...CMS.map((c) => [c, c]), ['Other', t.other]]} />
+          <Chips legend={t.industryLabel} name="industry" options={[...t.industries.map((v, i) => [INDUSTRY_VALUES[i], v]), ['Other', t.other]]} />
           <Chips legend={t.roleLabel} name="role" options={[...t.roles.map((r, i) => [ROLE_VALUES[i], r]), ['Other', t.other]]} />
         </div>
       </details>

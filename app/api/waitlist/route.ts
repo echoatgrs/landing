@@ -28,7 +28,7 @@ export async function POST(req: Request) {
   const entry = {
     email,
     site: clip(body.site),
-    cms: clip(body.cms, 60),
+    industry: clip(body.industry, 60),
     role: clip(body.role, 60),
     source: clip(body.source, 40),
     lang: clip(body.lang, 10),
