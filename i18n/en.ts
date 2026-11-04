@@ -101,6 +101,16 @@ export const en = {
       body: 'We visit your site from outside on a schedule and flag pages AI can’t read: blocked in robots.txt, rendered only by JS, never fetched.',
       tags: { robots: 'robots.txt', js: 'JS only', never: 'never fetched', jsonld: 'no JSON-LD', ok: '✓ ok' },
     },
+    citations: {
+      title: 'Are you in the answer?',
+      body: 'We ask the questions you care about, on a schedule, to China’s AI assistants (Doubao, Kimi, Qwen, ERNIE Bot, Yuanbao) and to ChatGPT, and record whether the answer cites your pages and where. Then we match it against your crawler log to find pages AI reads but never cites.',
+      qLabel: 'Question',
+      qTime: 'Every Monday',
+      q: 'Which headless CMS is best for a company website?',
+      names: ['Doubao', 'Kimi', 'Qwen', 'ERNIE Bot', 'Yuanbao', 'ChatGPT'],
+      cited: 'cited',
+      notCited: 'not cited',
+    },
   },
   oss: {
     label: 'open source · MIT',

@@ -103,6 +103,16 @@ export const zh: Dictionary = {
       body: '定期从外部访问你的网站，找出 AI 读不到的页面：被 robots.txt 拦截、只靠 JS 渲染、从未被抓取。',
       tags: { robots: 'robots.txt', js: '仅 JS', never: '从未抓取', jsonld: '缺 JSON-LD', ok: '✓ 正常' },
     },
+    citations: {
+      title: 'AI 回答里有没有你',
+      body: '定期用你关心的问题去问豆包、Kimi、通义千问、文心一言、腾讯元宝等国内 AI，以及 ChatGPT，记录回答有没有引用你的页面、排第几。再和爬虫日志对照，找出被 AI 读过却从没被引用的页面。',
+      qLabel: '问题',
+      qTime: '每周一',
+      q: '企业官网用哪个 headless CMS 比较好？',
+      names: ['豆包', 'Kimi', '通义千问', '文心一言', '腾讯元宝', 'ChatGPT'],
+      cited: '引用',
+      notCited: '未引用',
+    },
   },
   oss: {
     label: '开源 · MIT',

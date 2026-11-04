@@ -103,6 +103,16 @@ export const ru: Dictionary = {
       body: 'Регулярно заходим на сайт снаружи и находим страницы, которые AI не может прочитать: закрыты в robots.txt, рендерятся только JS, ни разу не запрашивались.',
       tags: { robots: 'robots.txt', js: 'только JS', never: 'не запрашивалась', jsonld: 'нет JSON-LD', ok: '✓ ок' },
     },
+    citations: {
+      title: 'Есть ли вы в ответе?',
+      body: 'Регулярно задаём важные для вас вопросы китайским AI-ассистентам (Doubao, Kimi, Qwen, ERNIE Bot, Yuanbao) и ChatGPT и записываем, ссылается ли ответ на ваши страницы и на каком месте. Затем сверяем с логом краулеров и находим страницы, которые AI читает, но никогда не цитирует.',
+      qLabel: 'Вопрос',
+      qTime: 'Каждый понедельник',
+      q: 'Какую headless CMS выбрать для сайта компании?',
+      names: ['Doubao', 'Kimi', 'Qwen', 'ERNIE Bot', 'Yuanbao', 'ChatGPT'],
+      cited: 'цитата',
+      notCited: 'нет цитаты',
+    },
   },
   oss: {
     label: 'open source · MIT',

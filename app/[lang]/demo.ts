@@ -62,3 +62,6 @@ export const DIAGNOSTICS: [string, 'robots' | 'js' | 'never' | 'jsonld' | 'ok'][
   ['/docs/install', 'jsonld'],
   ['/blog/payload-vs-strapi', 'ok'],
 ]
+
+// rank in the answer's cited sources, or null when the site was not cited
+export const CITATIONS: number[] = [2, 1, 0, 0, 4, 3]

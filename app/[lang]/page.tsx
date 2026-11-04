@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { site } from '../../site.config'
 import { dictionaries, hasLocale, locales } from '../../i18n'
-import { CHART, DIAGNOSTICS, ENGINES, ENGINE_DOTS, ENGINES_TOTAL, MARQUEE, REFERRALS, SITES } from './demo'
+import { CHART, CITATIONS, DIAGNOSTICS, ENGINES, ENGINE_DOTS, ENGINES_TOTAL, MARQUEE, REFERRALS, SITES } from './demo'
 import { LiveConsole } from './LiveConsole'
 import { Reveal } from './Reveal'
 import { WaitlistForm } from './WaitlistForm'
@@ -287,6 +287,33 @@ export default async function Home({ params }: PageProps<'/[lang]'>) {
                     </span>
                   </div>
                 ))}
+              </div>
+            </Reveal>
+
+            {/* 07 citation monitoring */}
+            <Reveal className="card wide soft">
+              <CardHead n="07" title={h.citations.title} body={h.citations.body} preview={h.tag} />
+              <div className="cite-wrap">
+                <div className="note dark cite-q">
+                  <div className="note-head mono-label">
+                    <span>{h.citations.qLabel}</span>
+                    <span>{h.citations.qTime}</span>
+                  </div>
+                  <p><strong>{h.citations.q}</strong></p>
+                </div>
+                <div className="diag cite-list">
+                  {h.citations.names.map((name, ci) => {
+                    const rank = CITATIONS[ci]
+                    return (
+                      <div key={name}>
+                        <span className="p">{name}</span>
+                        <span className={`chip ${rank ? (rank === 1 ? 'red' : 'ink') : 'ok'}`}>
+                          {rank ? `${h.citations.cited} #${rank}` : h.citations.notCited}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </Reveal>
 
