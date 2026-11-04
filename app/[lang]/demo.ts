@@ -15,7 +15,7 @@ export const CHART = Array.from({ length: 30 }, (_, c) => {
 })
 
 // Rank among the answer's cited sources per assistant (same order as soon.citations.names); 0 = not cited.
-export const CITATIONS: number[] = [3, 0, 0, 2, 1, 4]
+export const CITATIONS: number[] = [3, 0, 0, 1, 0, 2, 4]
 
 /** Per page, last 30 days: [path, AI crawler reads, answers citing it out of GAP_OF]. */
 export const GAP: [string, number, number][] = [

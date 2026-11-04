@@ -2,14 +2,14 @@ export const en = {
   langName: 'English',
   langShort: 'EN',
   meta: {
-    title: "Are you in the AI answer?",
-    description: "We ask ChatGPT, Perplexity and Gemini, plus China’s Doubao, Kimi and Qwen, your questions on a schedule and show whether their answers cite your site. In development; join the waitlist.",
+    title: "AI visibility: indexed and cited",
+    description: "See which AI assistants index your site and whether their answers mention you. ChatGPT, Perplexity, Gemini, YandexGPT, GigaChat, Doubao, Kimi and Qwen. In development; join the waitlist.",
   },
   hero: {
     badge: "Waitlist open · Plugin is open source",
     titleLines: ["In the AI", "answer"],
     titleMark: "?",
-    lede: "More people ask an AI assistant instead of opening search results. We ask ChatGPT, Perplexity and Gemini, plus China’s Doubao, Kimi, Qwen, ERNIE Bot and Yuanbao, the questions you care about, on a schedule, and show whether the answer cites your site, where it ranks, which page it used, and which competitors show up. Western and Chinese AI in one place.",
+    lede: "More people ask an AI assistant instead of opening search results. We show you two things: which AI assistants have indexed your site, and whether their answers mention you, where you rank, and next to which competitors. ChatGPT, Perplexity and Gemini, Russia’s YandexGPT and GigaChat, and China’s Doubao, Kimi and Qwen.",
   },
   form: {
     emailLabel: 'Work email',
@@ -28,7 +28,7 @@ export const en = {
     genericError: 'Something went wrong. Please try again.',
   },
   marqueeLabel: "Assistants we ask",
-  marquee: ["ChatGPT", "Perplexity", "Gemini", "Claude", "Doubao", "Kimi", "Qwen", "ERNIE Bot", "Yuanbao"],
+  marquee: ["ChatGPT", "Perplexity", "Gemini", "Claude", "YandexGPT", "GigaChat", "Doubao", "Kimi", "Qwen"],
   soon: {
     titleLines: ["See what", "AI says"],
     lede: "None of this is built yet. Join the waitlist and tell us which one you want first.",
@@ -39,13 +39,13 @@ export const en = {
       qLabel: "Question",
       qTime: "Every Monday",
       q: "Which headless CMS is best for a company website?",
-      names: ["ChatGPT", "Perplexity", "Gemini", "Doubao", "Kimi", "Qwen"],
+      names: ["ChatGPT", "Perplexity", "Gemini", "YandexGPT", "GigaChat", "Doubao", "Kimi"],
       cited: "cited",
       notCited: "not cited",
     },
     gap: {
-      title: "Read, but never cited",
-      body: "With the open-source plugin installed, we put your crawler log next to the citations: pages AI reads all the time but never mentions. Fix those first.",
+      title: "Indexed, but never cited",
+      body: "We put AI crawler fetches (indexed) next to citations in answers (exposure): pages AI reads all the time but never mentions. Fix those first.",
       cols: ["Page", "AI reads · 30 days", "Cited"],
       notCited: "not cited",
     },
@@ -61,7 +61,7 @@ export const en = {
     },
     sites: {
       title: "All sites, one view",
-      body: "Agencies see citations and AI reads for every client site in one place.",
+      body: "Agencies see indexing and exposure for every client site in one place.",
       chart: "acme.com · 30 days",
       user: "cited",
       crawler: "read",
@@ -70,9 +70,9 @@ export const en = {
   },
   oss: {
     label: "Open source · MIT",
-    title: "Start with the open-source plugin",
-    lede: "The Payload and Strapi plugins work today and keep data in your own database. Connect them later to see pages that are read but never cited.",
-    items: ["AI crawler log with IP verification", "llms.txt, Markdown and JSON-LD", "Dashboard and editor panel in your CMS"],
+    title: "On Payload or Strapi? Start now",
+    lede: "Install the open-source plugin and see which AI crawlers fetch your pages today, with SEO / GEO suggestions. Data stays in your own database.",
+    items: ["AI crawler log with IP verification", "SEO / GEO checks and suggestions", "llms.txt, Markdown and JSON-LD generated for you"],
     install: "Install",
     or: "or",
     docs: "View on GitHub ↗",
@@ -80,9 +80,9 @@ export const en = {
   faq: {
     label: "FAQ",
     items: [
-      { q: "Will this get me cited by AI?", a: "No tool can promise that, and we don’t. We measure: whether you are in the answer, where, next to whom, and which pages AI reads but never cites." },
-      { q: "Why Chinese AI too?", a: "Most tools only track ChatGPT and Perplexity. If you sell into China, or your site is Chinese, you also need Doubao, Kimi, Qwen, ERNIE Bot and Yuanbao. We track both." },
-      { q: "Do I need the plugin?", a: "No. Citation tracking only needs your domain and your questions. With the open-source plugin (Payload or Strapi) you also get citations matched against your crawler log." },
+      { q: "Will this get me cited by AI?", a: "No tool can promise that, and we don’t. We measure: which AI assistants index you, whether you are in their answers, where, next to whom, and which pages are indexed but never cited." },
+      { q: "Why so many assistants?", a: "Most tools only track ChatGPT and Perplexity. People in Russia ask YandexGPT and GigaChat; people in China ask Doubao, Kimi and Qwen. Track the AI your customers actually use." },
+      { q: "Do I need the plugin?", a: "No. Exposure tracking only needs your domain and your questions. If you run Payload or Strapi, the open-source plugin adds the crawler log so you see indexing and exposure together." },
     ],
   },
   cta: { titleLines: ['Get early', 'access'] },

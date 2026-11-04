@@ -4,14 +4,14 @@ export const zh: Dictionary = {
   langName: '中文',
   langShort: '中',
   meta: {
-    title: "AI 回答里有没有你",
-    description: "定期去问 ChatGPT、Perplexity、Gemini，以及豆包、Kimi、通义千问等国内 AI，看它们的回答有没有引用你的网站。开发中，欢迎加入候补。",
+    title: "AI 收录和曝光度",
+    description: "看哪些 AI 收录了你的网站，回答里有没有提到你。覆盖 ChatGPT、Perplexity、Gemini，YandexGPT、GigaChat，以及豆包、Kimi、通义千问。开发中，欢迎加入候补。",
   },
   hero: {
     badge: "候补名单开放中 · 插件开源",
     titleLines: ["AI 回答里", "有没有你"],
     titleMark: "？",
-    lede: "用户越来越多地直接问 AI，不再点开搜索结果。我们定期用你关心的问题去问 ChatGPT、Perplexity、Gemini，以及豆包、Kimi、通义千问、文心一言、腾讯元宝，告诉你回答里有没有引用你的网站、排第几、引用了哪个页面，以及竞争对手有没有被提到。海外和国内 AI 一起看。",
+    lede: "用户越来越多地直接问 AI，不再点开搜索结果。我们帮你看两件事：哪些 AI 收录了你的网站，以及它们回答问题时有没有提到你、排第几、和哪些竞争对手在一起。覆盖 ChatGPT、Perplexity、Gemini，俄罗斯的 YandexGPT 和 GigaChat，以及国内的豆包、Kimi、通义千问。",
   },
   form: {
     emailLabel: '工作邮箱',
@@ -30,7 +30,7 @@ export const zh: Dictionary = {
     genericError: '出了点问题，请重试。',
   },
   marqueeLabel: "我们会去问的 AI",
-  marquee: ["ChatGPT", "Perplexity", "Gemini", "Claude", "豆包", "Kimi", "通义千问", "文心一言", "腾讯元宝"],
+  marquee: ["ChatGPT", "Perplexity", "Gemini", "Claude", "YandexGPT", "GigaChat", "豆包", "Kimi", "通义千问"],
   soon: {
     titleLines: ["看清 AI", "怎么说你"],
     lede: "下面这些还在开发。加入候补，告诉我们你最想先用哪一个。",
@@ -41,13 +41,13 @@ export const zh: Dictionary = {
       qLabel: "问题",
       qTime: "每周一",
       q: "企业官网用哪个 headless CMS 比较好？",
-      names: ["ChatGPT", "Perplexity", "Gemini", "豆包", "Kimi", "通义千问"],
+      names: ["ChatGPT", "Perplexity", "Gemini", "YandexGPT", "GigaChat", "豆包", "Kimi"],
       cited: "引用",
       notCited: "未引用",
     },
     gap: {
-      title: "读过，却没被引用",
-      body: "装上开源插件后，把爬虫日志和引用结果放在一起：哪些页面 AI 经常来读，回答里却从来不提。这些页面最值得先改。",
+      title: "收录了，却没曝光",
+      body: "把 AI 爬虫的抓取记录（收录）和回答里的引用（曝光）放在一起：哪些页面 AI 经常来读，回答里却从来不提。这些页面最值得先改。",
       cols: ["页面", "AI 读取 · 30 天", "引用"],
       notCited: "未引用",
     },
@@ -63,7 +63,7 @@ export const zh: Dictionary = {
     },
     sites: {
       title: "所有站点，一个视图",
-      body: "代理公司可以在一个地方看所有客户站点的引用和 AI 读取情况。",
+      body: "代理公司可以在一个地方看所有客户站点的收录和曝光情况。",
       chart: "acme.com · 30 天",
       user: "引用",
       crawler: "读取",
@@ -72,9 +72,9 @@ export const zh: Dictionary = {
   },
   oss: {
     label: "开源 · MIT",
-    title: "先装开源插件",
-    lede: "Payload 和 Strapi 插件现在就能用，数据留在你自己的数据库。以后接上我们的服务，就能看到“读过却没被引用”。",
-    items: ["AI 爬虫日志，带 IP 验证", "llms.txt、Markdown 和 JSON-LD", "CMS 后台里的仪表盘和编辑器面板"],
+    title: "用 Payload 或 Strapi？现在就能用",
+    lede: "装上开源插件，马上能看到哪些 AI 爬虫来抓取了你的页面，并拿到 SEO / GEO 优化建议。数据留在你自己的数据库。",
+    items: ["AI 爬虫抓取记录，带 IP 验证", "SEO / GEO 检查和优化建议", "自动生成 llms.txt、Markdown 和 JSON-LD"],
     install: "安装",
     or: "或",
     docs: "在 GitHub 上查看 ↗",
@@ -82,9 +82,9 @@ export const zh: Dictionary = {
   faq: {
     label: "常见问题",
     items: [
-      { q: "用了它就能被 AI 引用吗？", a: "没有任何工具能保证这一点，我们也不会这样承诺。我们做的是测量：AI 的回答里有没有你、排第几、和谁在一起，并指出哪些页面被 AI 读过却没被引用。" },
-      { q: "为什么还要看国内 AI？", a: "大多数工具只追踪 ChatGPT 和 Perplexity。如果你想做中国市场，或者本身就是国内网站，还得看豆包、Kimi、通义千问、文心一言和元宝。我们两边一起看。" },
-      { q: "一定要装插件吗？", a: "不用。引用监测只需要你的域名和关心的问题。装了开源插件（Payload 或 Strapi），还能把引用和爬虫日志对照。" },
+      { q: "用了它就能被 AI 引用吗？", a: "没有任何工具能保证这一点，我们也不会这样承诺。我们做的是测量：哪些 AI 收录了你，回答里有没有你、排第几、和谁在一起，并指出哪些页面被收录却没有曝光。" },
+      { q: "为什么要看这么多 AI？", a: "大多数工具只看 ChatGPT 和 Perplexity。但俄罗斯用户问的是 YandexGPT 和 GigaChat，中国用户问的是豆包、Kimi 和通义千问。你的客户在哪个市场，就该看哪里的 AI。" },
+      { q: "一定要装插件吗？", a: "不用。曝光度监测只需要你的域名和关心的问题。如果你用 Payload 或 Strapi，装上开源插件还能看到爬虫抓取记录，把收录和曝光放在一起看。" },
     ],
   },
   cta: { titleLines: ['获取', '抢先体验'] },
