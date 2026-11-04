@@ -3,13 +3,13 @@ export const en = {
   langShort: 'EN',
   meta: {
     title: "Are you in the AI answer?",
-    description: "We ask Doubao, Kimi, Qwen, ERNIE Bot, Yuanbao and ChatGPT your questions on a schedule and show whether their answers cite your site. China’s AI first. In development; join the waitlist.",
+    description: "We ask ChatGPT, Perplexity and Gemini, plus China’s Doubao, Kimi and Qwen, your questions on a schedule and show whether their answers cite your site. In development; join the waitlist.",
   },
   hero: {
     badge: "Waitlist open · Plugin is open source",
     titleLines: ["In the AI", "answer"],
     titleMark: "?",
-    lede: "More people ask an AI assistant instead of opening search results. We ask China’s assistants (Doubao, Kimi, Qwen, ERNIE Bot, Yuanbao) and ChatGPT the questions you care about, on a schedule, and show whether the answer cites your site, where it ranks, which page it used, and which competitors show up.",
+    lede: "More people ask an AI assistant instead of opening search results. We ask ChatGPT, Perplexity and Gemini, plus China’s Doubao, Kimi, Qwen, ERNIE Bot and Yuanbao, the questions you care about, on a schedule, and show whether the answer cites your site, where it ranks, which page it used, and which competitors show up. Western and Chinese AI in one place.",
   },
   form: {
     emailLabel: 'Work email',
@@ -28,7 +28,7 @@ export const en = {
     genericError: 'Something went wrong. Please try again.',
   },
   marqueeLabel: "Assistants we ask",
-  marquee: ["Doubao", "Kimi", "Qwen", "ERNIE Bot", "Yuanbao", "ChatGPT", "Perplexity"],
+  marquee: ["ChatGPT", "Perplexity", "Gemini", "Claude", "Doubao", "Kimi", "Qwen", "ERNIE Bot", "Yuanbao"],
   soon: {
     titleLines: ["See what", "AI says"],
     lede: "None of this is built yet. Join the waitlist and tell us which one you want first.",
@@ -39,7 +39,7 @@ export const en = {
       qLabel: "Question",
       qTime: "Every Monday",
       q: "Which headless CMS is best for a company website?",
-      names: ["Doubao", "Kimi", "Qwen", "ERNIE Bot", "Yuanbao", "ChatGPT"],
+      names: ["ChatGPT", "Perplexity", "Gemini", "Doubao", "Kimi", "Qwen"],
       cited: "cited",
       notCited: "not cited",
     },
@@ -52,7 +52,7 @@ export const en = {
     alerts: {
       title: "Weekly brief and alerts",
       body: "A brief every Monday: answers that started citing you, ones you dropped out of, and where competitors appear. Same-day alerts when you fall out of an answer.",
-      n1Title: "Qwen stopped citing you",
+      n1Title: "Gemini stopped citing you",
       n1Body: "In “which headless CMS”, your page was replaced by competitor.com.",
       n1Time: "10:05",
       n2Title: "Weekly: acme.com",
@@ -81,7 +81,7 @@ export const en = {
     label: "FAQ",
     items: [
       { q: "Will this get me cited by AI?", a: "No tool can promise that, and we don’t. We measure: whether you are in the answer, where, next to whom, and which pages AI reads but never cites." },
-      { q: "Why China’s AI first?", a: "Plenty of tools track ChatGPT and Perplexity. Almost none track Doubao, Kimi, Qwen, ERNIE Bot and Yuanbao, which is where people in China ask." },
+      { q: "Why Chinese AI too?", a: "Most tools only track ChatGPT and Perplexity. If you sell into China, or your site is Chinese, you also need Doubao, Kimi, Qwen, ERNIE Bot and Yuanbao. We track both." },
       { q: "Do I need the plugin?", a: "No. Citation tracking only needs your domain and your questions. With the open-source plugin (Payload or Strapi) you also get citations matched against your crawler log." },
     ],
   },

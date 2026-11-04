@@ -5,13 +5,13 @@ export const zh: Dictionary = {
   langShort: '中',
   meta: {
     title: "AI 回答里有没有你",
-    description: "定期去问豆包、Kimi、通义千问、文心一言、腾讯元宝和 ChatGPT，看它们的回答有没有引用你的网站。国内 AI 优先。开发中，欢迎加入候补。",
+    description: "定期去问 ChatGPT、Perplexity、Gemini，以及豆包、Kimi、通义千问等国内 AI，看它们的回答有没有引用你的网站。开发中，欢迎加入候补。",
   },
   hero: {
     badge: "候补名单开放中 · 插件开源",
     titleLines: ["AI 回答里", "有没有你"],
     titleMark: "？",
-    lede: "用户越来越多地直接问豆包、Kimi、通义千问，不再点开搜索结果。我们定期用你关心的问题去问这些 AI，告诉你回答里有没有引用你的网站、排第几、引用了哪个页面，以及竞争对手有没有被提到。国内 AI 优先，也覆盖 ChatGPT。",
+    lede: "用户越来越多地直接问 AI，不再点开搜索结果。我们定期用你关心的问题去问 ChatGPT、Perplexity、Gemini，以及豆包、Kimi、通义千问、文心一言、腾讯元宝，告诉你回答里有没有引用你的网站、排第几、引用了哪个页面，以及竞争对手有没有被提到。海外和国内 AI 一起看。",
   },
   form: {
     emailLabel: '工作邮箱',
@@ -30,7 +30,7 @@ export const zh: Dictionary = {
     genericError: '出了点问题，请重试。',
   },
   marqueeLabel: "我们会去问的 AI",
-  marquee: ["豆包", "Kimi", "通义千问", "文心一言", "腾讯元宝", "ChatGPT", "Perplexity"],
+  marquee: ["ChatGPT", "Perplexity", "Gemini", "Claude", "豆包", "Kimi", "通义千问", "文心一言", "腾讯元宝"],
   soon: {
     titleLines: ["看清 AI", "怎么说你"],
     lede: "下面这些还在开发。加入候补，告诉我们你最想先用哪一个。",
@@ -41,7 +41,7 @@ export const zh: Dictionary = {
       qLabel: "问题",
       qTime: "每周一",
       q: "企业官网用哪个 headless CMS 比较好？",
-      names: ["豆包", "Kimi", "通义千问", "文心一言", "腾讯元宝", "ChatGPT"],
+      names: ["ChatGPT", "Perplexity", "Gemini", "豆包", "Kimi", "通义千问"],
       cited: "引用",
       notCited: "未引用",
     },
@@ -54,7 +54,7 @@ export const zh: Dictionary = {
     alerts: {
       title: "周报和告警",
       body: "每周一一份简报：哪些回答新引用了你，哪些丢了，竞争对手出现在哪里。掉出回答时当天通知你。",
-      n1Title: "通义千问不再引用你",
+      n1Title: "Gemini 不再引用你",
       n1Body: "“headless CMS 怎么选”的回答里，你的页面被 competitor.com 替换了。",
       n1Time: "10:05",
       n2Title: "周报：acme.com",
@@ -83,7 +83,7 @@ export const zh: Dictionary = {
     label: "常见问题",
     items: [
       { q: "用了它就能被 AI 引用吗？", a: "没有任何工具能保证这一点，我们也不会这样承诺。我们做的是测量：AI 的回答里有没有你、排第几、和谁在一起，并指出哪些页面被 AI 读过却没被引用。" },
-      { q: "为什么先做国内 AI？", a: "海外已经有不少工具在追踪 ChatGPT 和 Perplexity，但几乎没有人系统地看豆包、Kimi、通义千问、文心一言和元宝。国内用户问的就是这些 AI。" },
+      { q: "为什么还要看国内 AI？", a: "大多数工具只追踪 ChatGPT 和 Perplexity。如果你想做中国市场，或者本身就是国内网站，还得看豆包、Kimi、通义千问、文心一言和元宝。我们两边一起看。" },
       { q: "一定要装插件吗？", a: "不用。引用监测只需要你的域名和关心的问题。装了开源插件（Payload 或 Strapi），还能把引用和爬虫日志对照。" },
     ],
   },
